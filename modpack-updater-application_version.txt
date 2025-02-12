@@ -1,1 +1,1 @@
-https://github.com/Bristopher/Minecraft-Modpack-Updater/blob/main/Updater/0.21/Bristopher_Modpack_Updater_v0.21.exe
+https://raw.githubusercontent.com/Bristopher/Minecraft-Modpack-Updater/refs/heads/main/Updater/0.20/Bristopher_Modpack_Updater.txt
