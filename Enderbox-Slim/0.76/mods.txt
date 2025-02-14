@@ -319,5 +319,4 @@ notenoughanimations-forge-1.9.2-mc1.20.1.jar
 
 Changelog:
  - Test
-[Install]:"https://cdn.modrinth.com/data/MPCX6s5C/versions/9nsxApYz/notenoughanimations-forge-1.9.2-mc1.20.1.jar"
 [ProfileImage]:"https://github.com/Bristopher/Minecraft-Modpack-Updater/blob/main/Enderbox-Slim/wetkitty.JPEG?raw=true"
