@@ -318,5 +318,5 @@ zaynens_craftable_nametag_mod_1.20.1.jar
 notenoughanimations-forge-1.9.2-mc1.20.1.jar
 
 Changelog:
- - Test
+ - N/A since initial upload (hi guysss)
 [ProfileImage]:"https://github.com/Bristopher/Minecraft-Modpack-Updater/blob/main/Enderbox-Slim/wetkitty.JPEG?raw=true"
