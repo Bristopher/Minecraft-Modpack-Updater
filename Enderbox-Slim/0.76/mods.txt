@@ -320,4 +320,4 @@ notenoughanimations-forge-1.9.2-mc1.20.1.jar
 Changelog:
  - N/A since initial upload (hi guysss)
 [ProfileImage]:"https://github.com/Bristopher/Minecraft-Modpack-Updater/blob/main/Enderbox-Slim/wetkitty.JPEG?raw=true"
-[Overwrite]:"/essential","https://raw.githubusercontent.com/Bristopher/Minecraft-Modpack-Updater/refs/heads/main/Enderbox-Slim/0.76/config.toml"
+[Overwrite]:"/essential/config.toml","https://raw.githubusercontent.com/Bristopher/Minecraft-Modpack-Updater/refs/heads/main/Enderbox-Slim/0.76/config.toml"
