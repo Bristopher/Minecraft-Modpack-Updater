@@ -319,7 +319,6 @@ zaynens_craftable_nametag_mod_1.20.1.jar
 notenoughanimations-forge-1.9.2-mc1.20.1.jar
 webdisplays-2.0.2-1.20.1.jar
 mcef-forge-2.1.6-1.20.1.jar
-glass-0.1.1%2Balpha%2B1.20.1.jar
 Rats-1.20.1-8.1.3.jar
 
 Changelog:
@@ -330,5 +329,4 @@ Changelog:
 [Install]:"https://mediafilez.forgecdn.net/files/5778/405/cyanide-forge-1.20.1-4.1.1.jar"
 [Install]:"https://mediafilez.forgecdn.net/files/5823/561/webdisplays-2.0.2-1.20.1.jar"
 [Install]:"https://mediafilez.forgecdn.net/files/5828/187/mcef-forge-2.1.6-1.20.1.jar"
-[Install]:"https://mediafilez.forgecdn.net/files/5916/325/glass-0.1.1%2Balpha%2B1.20.1.jar"
 [Install]:"https://mediafilez.forgecdn.net/files/5904/296/Rats-1.20.1-8.1.3.jar"
