@@ -321,4 +321,4 @@ Changelog:
  - N/A since initial upload (hi guysss)
 [ProfileImage]:"https://github.com/Bristopher/Minecraft-Modpack-Updater/blob/main/Enderbox-Slim/wetkitty.JPEG?raw=true"
 [Overwrite]:"/essential/config.toml","https://raw.githubusercontent.com/Bristopher/Minecraft-Modpack-Updater/refs/heads/main/Enderbox-Slim/0.76/config.toml"
-[Install]:"https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap-world-map-waystones-compability/download/4637926"
+[Install]:"https://mediafilez.forgecdn.net/files/4637/926/xaeros_waystones_compability-1.0.jar"
