@@ -29,6 +29,7 @@ CraftPresence-2.5.3+1.20.1-forge.jar
 CraftTweaker-forge-1.20.1-14.0.53.jar
 CreativeCore_FORGE_v2.12.31_mc1.20.1.jar
 CustomStartingGear-1.20-2.0.3.jar
+cyanide-forge-1.20.1-4.1.1.jar
 DeathCounter-1.20.1-Forge-1.4.0.jar
 DeathKnell-Forge-1.20.1-10.0.4.jar
 Disenchanting-forge-1.20.1-2.2.4.jar
@@ -322,3 +323,4 @@ Changelog:
 [ProfileImage]:"https://github.com/Bristopher/Minecraft-Modpack-Updater/blob/main/Enderbox-Slim/wetkitty.JPEG?raw=true"
 [Overwrite]:"/essential/config.toml","https://raw.githubusercontent.com/Bristopher/Minecraft-Modpack-Updater/refs/heads/main/Enderbox-Slim/0.76/config.toml"
 [Install]:"https://mediafilez.forgecdn.net/files/4637/926/xaeros_waystones_compability-1.0.jar"
+[Install]:"https://mediafilez.forgecdn.net/files/5778/405/cyanide-forge-1.20.1-4.1.1.jar"
