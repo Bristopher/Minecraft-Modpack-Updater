@@ -1,0 +1,46 @@
+name: Update Modpack Release and Version
+
+on:
+  release:
+    types: [published]  # Runs when a new release is published
+  schedule:
+    - cron: "0 * * * *"  # Runs every hour
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  update-release-files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Extract Release Version (If Triggered by Release)
+        if: github.event_name == 'release'
+        run: |
+          VERSION=${{ github.event.release.tag_name }}
+          VERSION=${VERSION#v}  # Remove 'v' if present (e.g., v0.27 -> 0.27)
+          echo "Detected release version: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Create Directory and File (If Triggered by Release)
+        if: github.event_name == 'release'
+        run: |
+          mkdir -p Minecraft-Modpack-Updater/Updater/$VERSION
+          echo "https://github.com/Bristopher/Minecraft-Modpack-Updater/releases/download/$VERSION/Bristopher_Modpack_Updater_v$VERSION.exe" > Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt
+
+      - name: Fetch Latest Version (For Scheduled or Manual Run)
+        if: github.event_name != 'release'
+        run: |
+          LATEST_VERSION=$(curl -s https://api.github.com/repos/Bristopher/Minecraft-Modpack-Updater/contents/Updater | jq -r '.[].name' | sort -V | tail -n1)
+          echo "Latest version: $LATEST_VERSION"
+          echo "$LATEST_VERSION" > modpack-updater-application_version.txt
+          echo "VERSION=$LATEST_VERSION" >> $GITHUB_ENV
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
+          git add .
+          git commit -m "Update modpack version and release files for version $VERSION" || echo "No changes to commit"
+          git push
