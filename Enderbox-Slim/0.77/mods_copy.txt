@@ -278,12 +278,12 @@ rer-2.9.0.jar.disabled
 resourcefulconfig-forge-1.20.1-2.1.2.jar
 resourcefullib-forge-1.20.1-2.1.29.jar
 riverredux-0.3.1.jar
-saturn-mc1.20.1-0.1.3.jar.disabled
+saturn-mc1.20.1-0.1.3.jar
 savage_and_ravage-1.20.1-6.0.0.jar
 scarecrowsterritory-1.1.11e-forge-mc1.20.jar
 sculktransporting-1.20.1-1.2.jar
 sereneseasonsfix-1.20.2-1.1.0.1.jar.disabled
-servercore-forge-1.5.2+1.20.1.jar.disabled
+servercore-forge-1.5.2+1.20.1.jar
 serverfixforsereneseasonsphc2trees-1.20.1-1.0.0.jar.disabled
 sit-1.20.1-1.3.5.jar
 smallships-forge-1.20.1-2.0.0-b1.4.jar
