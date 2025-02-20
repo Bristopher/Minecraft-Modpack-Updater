@@ -49,9 +49,9 @@ jobs:
 
       - name: Update Application Version Link
         run: |
-          # Update the modpack-updater-application_version.txt with the link to the new file
-          echo "Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt" > modpack-updater-application_version.txt
-          echo "Updated modpack-updater-application_version.txt with the link to the new file."
+          # Update the modpack-updater-application_version.txt with the raw link to the new file
+          echo "https://raw.githubusercontent.com/Bristopher/Minecraft-Modpack-Updater/main/Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt" > modpack-updater-application_version.txt
+          echo "Updated modpack-updater-application_version.txt with the raw link to the new file."
           
           # List the root directory to check the file creation
           ls -l
