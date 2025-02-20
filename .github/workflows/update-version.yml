@@ -1,7 +1,7 @@
 name: Update Modpack Release and Version
 
 permissions:
-  contents: write  # Grant write access to repository contents
+  contents: write
 
 on:
   release:
@@ -36,23 +36,24 @@ jobs:
       - name: Create Directory and File (If Triggered by Release)
         if: github.event_name == 'release'
         run: |
-          # Create the directory if it doesn't exist
+          # Create the directory for the version if it doesn't exist
           mkdir -p Minecraft-Modpack-Updater/Updater/$VERSION
-          # Create the text file with the link to the latest release
+          # Create the file with the link to the release EXE
           echo "https://github.com/Bristopher/Minecraft-Modpack-Updater/releases/download/$VERSION/Bristopher_Modpack_Updater_v$VERSION.exe" > Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt
-          # Update the modpack-updater-application_version.txt with the link to the text file
-          echo "Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt" > modpack-updater-application_version.txt
+          echo "Link to EXE created at Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt"
 
-      - name: Fetch Latest Release Version (For Scheduled or Manual Run)
-        if: github.event_name != 'release'
+      - name: Update Application Version Link
+        if: github.event_name == 'release'
         run: |
-          LATEST_VERSION=$(curl -s https://api.github.com/repos/Bristopher/Minecraft-Modpack-Updater/releases/latest | jq -r '.tag_name' | sed 's/^v//')  # Remove 'v' from version
-          echo "Latest version: $LATEST_VERSION"
-          echo "$LATEST_VERSION" > modpack-updater-application_version.txt
-          echo "VERSION=$LATEST_VERSION" >> $GITHUB_ENV
+          # Update the modpack-updater-application_version.txt with the link to the new file
+          echo "Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt" > modpack-updater-application_version.txt
+          echo "Updated modpack-updater-application_version.txt with the link to the new file."
 
       - name: Commit and Push Changes
         run: |
           git add .
           git commit -m "Update modpack version and release files for version $VERSION" || echo "No changes to commit"
-          git push origin HEAD:main  # Push to the 'main' branch or replace 'main' with your target branch
+          # Fetch latest changes and rebase
+          git pull --rebase origin main || echo "No changes to pull"
+          # Push to the 'main' branch
+          git push origin HEAD:main
