@@ -41,6 +41,9 @@ jobs:
           # Create the file with the link to the release EXE
           echo "https://github.com/Bristopher/Minecraft-Modpack-Updater/releases/download/$VERSION/Bristopher_Modpack_Updater_v$VERSION.exe" > Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt
           echo "Link to EXE created at Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt"
+          
+          # List the directory to check if the file is created
+          ls -R Minecraft-Modpack-Updater
 
       - name: Update Application Version Link
         if: github.event_name == 'release'
@@ -48,6 +51,9 @@ jobs:
           # Update the modpack-updater-application_version.txt with the link to the new file
           echo "Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt" > modpack-updater-application_version.txt
           echo "Updated modpack-updater-application_version.txt with the link to the new file."
+          
+          # List the root directory to check the file creation
+          ls -l
 
       - name: Commit and Push Changes
         run: |
