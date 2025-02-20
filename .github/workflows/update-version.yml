@@ -14,6 +14,13 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history for all branches
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions@github.com"
 
       - name: Extract Release Version (If Triggered by Release)
         if: github.event_name == 'release'
@@ -39,8 +46,6 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions@github.com"
           git add .
           git commit -m "Update modpack version and release files for version $VERSION" || echo "No changes to commit"
-          git push
+          git push origin HEAD:main  # Push to the 'main' branch or replace 'main' with your target branch
