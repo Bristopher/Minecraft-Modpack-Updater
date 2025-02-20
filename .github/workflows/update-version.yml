@@ -25,30 +25,24 @@ jobs:
 
       - name: Extract Release Version
         run: |
-          if [[ "${{ github.event_name }}" == "release" ]]; then
-            VERSION=${{ github.event.release.tag_name }}
-            VERSION=${VERSION#v}  # Remove 'v' if present (e.g., v0.27 -> 0.27)
-            echo "Detected release version: $VERSION"
-            echo "VERSION=$VERSION" >> $GITHUB_ENV
-          else
-            echo "No release version detected, manually specifying version."
-            VERSION="0.29"  # Change this to the version you want for manual runs
-            echo "VERSION=$VERSION" >> $GITHUB_ENV
-          fi
+          # Fetch the latest release version from GitHub API
+          LATEST_RELEASE=$(curl -s https://api.github.com/repos/Bristopher/Minecraft-Modpack-Updater/releases/latest)
+          VERSION=$(echo $LATEST_RELEASE | jq -r .tag_name)
+          VERSION=${VERSION#v}  # Remove 'v' if present (e.g., v0.27 -> 0.27)
+          echo "Detected release version: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
 
       - name: Create Directory and File
         run: |
           # Create the directory for the version if it doesn't exist
-          if mkdir -p Updater/$VERSION; then
-            echo "Directory created: Minecraft-Modpack-Updater/Updater/$VERSION"
-          else
-            echo "Failed to create directory: Minecraft-Modpack-Updater/Updater/$VERSION"
-            exit 1
-          fi
+          mkdir -p Updater/$VERSION
+          echo "Directory created: Updater/$VERSION"
           
           # Create the file with the link to the release EXE
-          FILE_PATH="Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt"
-          if echo "https://github.com/Bristopher/Minecraft-Modpack-Updater/releases/download/$VERSION/Bristopher_Modpack_Updater_v$VERSION.exe" > "$FILE_PATH"; then
+          FILE_PATH="Updater/$VERSION/Bristopher_Modpack_Updater.txt"
+          echo "https://github.com/Bristopher/Minecraft-Modpack-Updater/releases/download/$VERSION/Bristopher_Modpack_Updater_v$VERSION.exe" > "$FILE_PATH"
+          if [ $? -eq 0 ]; then
             echo "Link to EXE created at $FILE_PATH"
           else
             echo "Failed to create file: $FILE_PATH"
@@ -56,7 +50,8 @@ jobs:
           fi
           
           # List the directory to check if the file is created
-          ls -R Minecraft-Modpack-Updater
+          ls -R Updater
+
 
 
       - name: Update Application Version Link
