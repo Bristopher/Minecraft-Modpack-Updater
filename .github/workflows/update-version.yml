@@ -1,13 +1,11 @@
 name: Update Modpack Release and Version
 
 permissions:
-  contents: write
+  contents: write  # Grant write access to repository contents
 
 on:
   release:
     types: [published]  # Runs when a new release is published
-  schedule:
-    - cron: "0 * * * *"  # Runs every hour
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
@@ -36,8 +34,12 @@ jobs:
       - name: Create Directory and File (If Triggered by Release)
         if: github.event_name == 'release'
         run: |
+          # Create the directory if it doesn't exist
           mkdir -p Minecraft-Modpack-Updater/Updater/$VERSION
+          # Create the text file with the link to the latest release
           echo "https://github.com/Bristopher/Minecraft-Modpack-Updater/releases/download/$VERSION/Bristopher_Modpack_Updater_v$VERSION.exe" > Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt
+          # Update the modpack-updater-application_version.txt with the link to the text file
+          echo "Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt" > modpack-updater-application_version.txt
 
       - name: Fetch Latest Version (For Scheduled or Manual Run)
         if: github.event_name != 'release'
