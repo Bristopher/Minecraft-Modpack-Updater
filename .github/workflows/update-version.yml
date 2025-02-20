@@ -6,6 +6,8 @@ permissions:
 on:
   release:
     types: [published]  # Runs when a new release is published
+  schedule:
+    - cron: "0 * * * *"  # Runs every hour
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
@@ -41,10 +43,10 @@ jobs:
           # Update the modpack-updater-application_version.txt with the link to the text file
           echo "Minecraft-Modpack-Updater/Updater/$VERSION/Bristopher_Modpack_Updater.txt" > modpack-updater-application_version.txt
 
-      - name: Fetch Latest Version (For Scheduled or Manual Run)
+      - name: Fetch Latest Release Version (For Scheduled or Manual Run)
         if: github.event_name != 'release'
         run: |
-          LATEST_VERSION=$(curl -s https://api.github.com/repos/Bristopher/Minecraft-Modpack-Updater/contents/Updater | jq -r '.[].name' | sort -V | tail -n1)
+          LATEST_VERSION=$(curl -s https://api.github.com/repos/Bristopher/Minecraft-Modpack-Updater/releases/latest | jq -r '.tag_name' | sed 's/^v//')  # Remove 'v' from version
           echo "Latest version: $LATEST_VERSION"
           echo "$LATEST_VERSION" > modpack-updater-application_version.txt
           echo "VERSION=$LATEST_VERSION" >> $GITHUB_ENV
