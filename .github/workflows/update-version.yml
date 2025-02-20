@@ -1,5 +1,8 @@
 name: Update Modpack Release and Version
 
+permissions:
+  contents: write
+
 on:
   release:
     types: [published]  # Runs when a new release is published
